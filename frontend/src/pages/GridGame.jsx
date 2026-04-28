@@ -214,7 +214,7 @@ export default function GridGame() {
         const tile = grid[nr][nc];
         if (tile === TILE.RED) {
           setLives((l) => {
-            const nl = l - .5;
+            const nl = l - 1;
             if (nl <= 0) { setTimeout(() => setGameState("lose"), 100); }
             return nl;
           });
@@ -232,7 +232,7 @@ export default function GridGame() {
           });
           setScore((s) => s + 10);
           setBlueLeft((bl) => {
-            const nb = bl - .5;
+            const nb = bl - 1;
             if (nb <= 0) {
               setTimeout(() => {
                 if (pattern === 1) {
