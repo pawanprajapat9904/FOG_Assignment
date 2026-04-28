@@ -1,0 +1,134 @@
+:root {
+  --neon-border: #00f2ff;
+  --neon-fill: rgba(0, 242, 255, 0.05);
+  --danger-accent: #ff0055;
+  --dark-matte: #05070a;
+  --nav-height: 80px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 2000;
+  background: var(--dark-matte);
+  /* Tactical Shape */
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 92% 70%, 90% 100%, 10% 100%, 8% 70%, 0 70%);
+  border-bottom: 1px solid var(--neon-border);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  height: 70px;
+  background: rgba(2, 5, 8, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-inner {
+  height: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo Styling */
+.navbar-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  text-decoration: none;
+}
+.logo-text {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900; font-size: 26px;
+  color: #fff; letter-spacing: 2px;
+  text-shadow: 2px 2px var(--danger-accent);
+}
+.logo-sub {
+  color: var(--neon-border);
+  font-size: 12px; font-weight: bold;
+  letter-spacing: 4px;
+}
+
+/* Center Links */
+.navbar-links { display: flex; gap: 10px; }
+
+.nav-link {
+  color: #7ab5cc;
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700; font-size: 13px;
+  padding: 10px 25px;
+  clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+  transition: 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: var(--neon-border);
+  color: #000;
+  box-shadow: 0 0 15px var(--neon-border);
+}
+
+/* Status HUD (Right Side) */
+.nav-status-hud {
+  display: flex; gap: 20px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.status-item {
+  display: flex; flex-direction: column;
+  justify-content: center;
+}
+
+.status-label { font-size: 9px; color: var(--danger-accent); }
+.status-value { font-size: 14px; font-weight: bold; }
+.cyan { color: var(--neon-border); }
+
+.mini-xp-bar {
+  width: 60px; height: 3px; background: #222; margin-top: 4px;
+}
+.mini-xp-bar .fill {
+  height: 100%; background: var(--neon-border);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+  .nav-status-hud { display: none; } /* Mobile pe HUD footer mein shift hoga */
+  
+  .navbar {
+     clip-path: none; height: 60px;
+  }
+  
+  .navbar-links {
+    position: fixed; top: 60px; right: -100%;
+    width: 280px; height: 100vh;
+    background: #05070a;
+    flex-direction: column; padding: 40px 20px;
+    border-left: 1px solid var(--neon-border);
+    transition: 0.4s;
+  }
+  
+  .navbar-links.open { right: 0; }
+  
+  .nav-link {
+    clip-path: none; width: 100%;
+    border-bottom: 1px solid rgba(0, 242, 255, 0.1);
+  }
+}
+
+/* Hamburger */
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 10px;
+}
+.hamburger span {
+  display: block; width: 25px; height: 2px;
+  background: var(--neon-border); margin: 5px 0;
+  transition: 0.3s;
+}
+
+@media (max-width: 1024px) { .hamburger { display: block; } }
